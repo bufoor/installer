@@ -1,7 +1,14 @@
 # installer
 The goal of this project is to automate installation of base packages needed on my laptop after a fresh Ubuntu had installed.
 
-###Packages list:
+## requirements
+ansible >=2.1
+`sudo apt-get install software-properties-common`
+`sudo apt-add-repository ppa:ansible/ansible`
+`sudo apt-get update`
+`sudo apt-get install ansible`
+
+##Packages list:
 - Git
 - Java 8
 - Docker
@@ -13,5 +20,5 @@ The goal of this project is to automate installation of base packages needed on 
 - Network manager open connect
 - Spotify
 
-### How to run
+## How to run
 `ansible-playbook -i inventory.yml playbook.yml --ask-become-pass`

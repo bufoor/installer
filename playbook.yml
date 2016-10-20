@@ -12,14 +12,13 @@
     - git
     - docker
     - docker-compose
+    - network-manager-openconnect
+    - software-properties-common
+    - gnome-shell
   
   - name: add user to the docker group
     become: true    
     user: name=bufoor groups=docker append=yes
-
-  - name: Install add-apt-repostory
-    become: true
-    apt: name=software-properties-common state=latest
 
   - name: Add Oracle Java Repository
     become: true
@@ -37,38 +36,29 @@
      - ca-certificates
      - oracle-java8-set-default
 
-  - name: Add Spotify repository #sudo add-apt-repository "deb http://repository.spotify.com stable non-free"
+  - name: Add Spotify repository
     become: yes
     apt_repository: repo='deb http://repository.spotify.com stable non-free'
   
   - name: Add Spotify repository keys
     become: yes
     apt_key: keyserver=keyserver.ubuntu.com id=94558F59
-  - name: Update packages list
-    become: yes
-    apt: update_cache=yes
 
-#WARNING: The following packages cannot be authenticated!
   - name: Install Spotify client
     become: yes
     apt: name=spotify-client state=present allow-unauthenticated=yes
     
-    #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59  
-    #sudo apt-get install spotify-client
-  - name: "apt | ensure Google linux signing key present"
+  - name: Add Google Chrome repository keys
     become: yes
     apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
 
-  - name: "apt | ensure Google chrome repo present, using a workaround for missing x86 distribution"
+  - name: Add Google Chrome repository
     become: yes
     copy:
      content: "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
      dest: "/etc/apt/sources.list.d/google-chrome.list"
 
-  - name: "apt | update cache"
-    become: yes
-    apt: update_cache=yes
-  - name: "apt | ensure Google chrome present"
+  - name: Install Google Chrome Stable
     become: yes
     apt: name=google-chrome-stable update_cache=yes
 
