@@ -1,0 +1,11 @@
+---
+- hosts: workstation
+  tasks: 
+  - name: install common packages
+    become: true
+    apt: name={{ item }} state=present
+    with_items:
+    - python-selinux
+    - git
+    - docker
+    - docker-compose
