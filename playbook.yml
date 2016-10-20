@@ -17,6 +17,7 @@
     - gnome-shell
     - gnome-tweak-tool
     - vlc
+    - firewalld
   
   - name: add user to the docker group
     become: true    

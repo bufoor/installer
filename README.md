@@ -3,10 +3,10 @@ The goal of this project is to automate installation of base packages needed on 
 
 ## requirements
 ansible >=2.1
-`sudo apt-get install software-properties-common`
-`sudo apt-add-repository ppa:ansible/ansible`
-`sudo apt-get update`
-`sudo apt-get install ansible`
+- `sudo apt-get install software-properties-common`
+- `sudo apt-add-repository ppa:ansible/ansible`
+- `sudo apt-get update`
+- `sudo apt-get install ansible`
 
 ##Packages list:
 - Git
