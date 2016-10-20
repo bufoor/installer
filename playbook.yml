@@ -16,6 +16,7 @@
     - software-properties-common
     - gnome-shell
     - gnome-tweak-tool
+    - vlc
   
   - name: add user to the docker group
     become: true    
@@ -62,4 +63,16 @@
   - name: Install Google Chrome Stable
     become: yes
     apt: name=google-chrome-stable update_cache=yes
+
+  - name: Add Virtualbox repository keys
+    become: yes
+    apt_key: url=https://www.virtualbox.org/download/oracle_vbox.asc state=present
+
+  - name: Add Virtualbox repository
+    become: yes
+    apt_repository: repo="deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib" state=present
+
+  - name: Install VirtualBox
+    become: yes
+    apt: pkg=virtualbox-5.1 state=present allow-unauthenticated=yes
 

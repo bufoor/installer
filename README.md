@@ -19,6 +19,7 @@ ansible >=2.1
 - Gnome Tweak tool
 - Network manager open connect
 - Spotify
+- VLC
 
 ## How to run
 `ansible-playbook -i inventory.yml playbook.yml --ask-become-pass`
