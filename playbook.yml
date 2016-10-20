@@ -49,9 +49,9 @@
     apt: update_cache=yes
 
 #WARNING: The following packages cannot be authenticated!
-#  - name: Install Spotify client
-#    become: yes
-#    apt: name=spotify-client state=present 
+  - name: Install Spotify client
+    become: yes
+    apt: name=spotify-client state=present allow-unauthenticated=yes
     
     #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59  
     #sudo apt-get install spotify-client
