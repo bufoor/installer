@@ -15,6 +15,7 @@
     - network-manager-openconnect
     - software-properties-common
     - gnome-shell
+    - gnome-tweak-tool
   
   - name: add user to the docker group
     become: true    
