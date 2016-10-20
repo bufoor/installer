@@ -1,3 +1,6 @@
+#to do: git config --global user.name "John Doe"
+#to do: git config --global user.email johndoe@example.com
+
 ---
 - hosts: workstation
   tasks: 
@@ -9,3 +12,63 @@
     - git
     - docker
     - docker-compose
+  
+  - name: add user to the docker group
+    become: true    
+    user: name=bufoor groups=docker append=yes
+
+  - name: Install add-apt-repostory
+    become: true
+    apt: name=software-properties-common state=latest
+
+  - name: Add Oracle Java Repository
+    become: true
+    apt_repository: repo='ppa:webupd8team/java'
+
+  - name: Accept Java 8 License
+    become: true
+    debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+
+  - name: Install Oracle Java 8
+    become: yes
+    apt: name={{item}} state=latest
+    with_items:
+     - oracle-java8-installer
+     - ca-certificates
+     - oracle-java8-set-default
+
+  - name: Add Spotify repository #sudo add-apt-repository "deb http://repository.spotify.com stable non-free"
+    become: yes
+    apt_repository: repo='deb http://repository.spotify.com stable non-free'
+  
+  - name: Add Spotify repository keys
+    become: yes
+    apt_key: keyserver=keyserver.ubuntu.com id=94558F59
+  - name: Update packages list
+    become: yes
+    apt: update_cache=yes
+
+#WARNING: The following packages cannot be authenticated!
+#  - name: Install Spotify client
+#    become: yes
+#    apt: name=spotify-client state=present 
+    
+    #sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59  
+    #sudo apt-get install spotify-client
+  - name: "apt | ensure Google linux signing key present"
+    become: yes
+    apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+
+  - name: "apt | ensure Google chrome repo present, using a workaround for missing x86 distribution"
+    become: yes
+    copy:
+     content: "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
+     dest: "/etc/apt/sources.list.d/google-chrome.list"
+
+  - name: "apt | update cache"
+    become: yes
+    apt: update_cache=yes
+  - name: "apt | ensure Google chrome present"
+    become: yes
+    apt: name=google-chrome-stable update_cache=yes
+
