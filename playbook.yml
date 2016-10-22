@@ -9,4 +9,5 @@
     - {role: spotify, become: true}
     - {role: google-chrome, become: true}
     - {role: virtualbox, become: true}
+    - {role: docker, become: true}
 

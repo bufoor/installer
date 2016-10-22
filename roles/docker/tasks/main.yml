@@ -1,0 +1,12 @@
+---
+- name: install docker
+  apt: name="{{ item }}" state=present
+  with_items:
+   - docker
+   - docker-compose
+
+- name: add user to the docker group
+  user: name=bufoor groups=docker append=yes
+
+- name: restart docker
+  service: name=docker state=restarted
