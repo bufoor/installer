@@ -7,21 +7,9 @@
     - {role: common, become: true}
     - {role: java8, become: true}
     - {role: spotify, become: true}
+    - {role: google-chrome, become: true}
 
   tasks:
-  - name: Add Google Chrome repository keys
-    become: yes
-    apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
-
-  - name: Add Google Chrome repository
-    become: yes
-    copy:
-     content: "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
-     dest: "/etc/apt/sources.list.d/google-chrome.list"
-
-  - name: Install Google Chrome Stable
-    become: yes
-    apt: name=google-chrome-stable update_cache=yes
 
   - name: Add Virtualbox repository keys
     become: yes

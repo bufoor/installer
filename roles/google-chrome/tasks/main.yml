@@ -1,0 +1,12 @@
+---
+- name: Add Google Chrome repository keys
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+
+- name: Add Google Chrome repository
+  copy:
+   content: "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
+   dest: "/etc/apt/sources.list.d/google-chrome.list"
+
+- name: Install Google Chrome Stable
+  apt: name=google-chrome-stable update_cache=yes
+
