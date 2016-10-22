@@ -1,0 +1,10 @@
+---
+- name: Add Spotify repository
+  apt_repository: repo='deb http://repository.spotify.com stable non-free'
+  
+- name: Add Spotify repository keys
+  apt_key: keyserver=keyserver.ubuntu.com id=94558F59
+
+- name: Install Spotify client
+  apt: name=spotify-client state=present allow-unauthenticated=yes
+

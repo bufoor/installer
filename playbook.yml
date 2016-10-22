@@ -5,40 +5,10 @@
 - hosts: workstation
   roles:
     - {role: common, become: true}
+    - {role: java8, become: true}
+    - {role: spotify, become: true}
 
   tasks:
-  - name: add user to the docker group
-    become: true    
-    user: name=bufoor groups=docker append=yes
-
-  - name: Add Oracle Java Repository
-    become: true
-    apt_repository: repo='ppa:webupd8team/java'
-
-  - name: Accept Java 8 License
-    become: true
-    debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
-
-  - name: Install Oracle Java 8
-    become: yes
-    apt: name={{item}} state=latest
-    with_items:
-     - oracle-java8-installer
-     - ca-certificates
-     - oracle-java8-set-default
-
-  - name: Add Spotify repository
-    become: yes
-    apt_repository: repo='deb http://repository.spotify.com stable non-free'
-  
-  - name: Add Spotify repository keys
-    become: yes
-    apt_key: keyserver=keyserver.ubuntu.com id=94558F59
-
-  - name: Install Spotify client
-    become: yes
-    apt: name=spotify-client state=present allow-unauthenticated=yes
-    
   - name: Add Google Chrome repository keys
     become: yes
     apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present

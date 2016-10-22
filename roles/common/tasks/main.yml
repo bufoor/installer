@@ -3,6 +3,7 @@
   apt: name="{{ item }}" state=present
   with_items:
    - python-selinux
+   - mc
    - git
    - docker
    - docker-compose
@@ -13,3 +14,7 @@
    - vlc
    - firewalld
    - firewall-config
+
+- name: add user to the docker group
+  user: name=bufoor groups=docker append=yes
+
