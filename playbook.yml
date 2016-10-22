@@ -3,23 +3,10 @@
 
 ---
 - hosts: workstation
-  tasks: 
-  - name: install common packages
-    become: true
-    apt: name={{ item }} state=present
-    with_items:
-    - python-selinux
-    - git
-    - docker
-    - docker-compose
-    - network-manager-openconnect
-    - software-properties-common
-    - gnome-shell
-    - gnome-tweak-tool
-    - vlc
-    - firewalld
-    - firewall-config
-  
+  roles:
+    - {common, become: true}
+
+  tasks:
   - name: add user to the docker group
     become: true    
     user: name=bufoor groups=docker append=yes

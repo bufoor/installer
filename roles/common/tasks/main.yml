@@ -1,0 +1,15 @@
+---
+- name: install common packages
+    apt: name={{ item }} state=present
+    with_items:
+    - python-selinux
+    - git
+    - docker
+    - docker-compose
+    - network-manager-openconnect
+    - software-properties-common
+    - gnome-shell
+    - gnome-tweak-tool
+    - vlc
+    - firewalld
+    - firewall-config
