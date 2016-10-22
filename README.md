@@ -23,3 +23,4 @@ ansible >=2.1
 
 ## How to run
 `ansible-playbook -i inventory.yml playbook.yml --ask-become-pass`
+`ansible-playbook -i inventory.yml playbook.yml --ask-become-pass --extra-vars "user_email=<<EMAIL>> user_name=<<MAIL>>"`
