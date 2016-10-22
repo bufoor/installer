@@ -5,7 +5,7 @@
 - name: Accept Java 8 License
   debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
 
-- name: Install Oracle Java 8
+- name: Install
   apt: name={{item}} state=latest
   with_items:
    - oracle-java8-installer

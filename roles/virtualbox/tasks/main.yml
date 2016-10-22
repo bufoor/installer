@@ -5,6 +5,6 @@
 - name: Add Virtualbox repository
   apt_repository: repo="deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib" state=present
 
-- name: Install VirtualBox
+- name: Install
   apt: pkg=virtualbox-5.1 state=present allow-unauthenticated=yes
 

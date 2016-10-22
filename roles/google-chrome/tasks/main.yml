@@ -7,6 +7,6 @@
    content: "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
    dest: "/etc/apt/sources.list.d/google-chrome.list"
 
-- name: Install Google Chrome Stable
+- name: Install
   apt: name=google-chrome-stable update_cache=yes
 

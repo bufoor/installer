@@ -5,6 +5,6 @@
 - name: Add Spotify repository keys
   apt_key: keyserver=keyserver.ubuntu.com id=94558F59
 
-- name: Install Spotify client
+- name: Install
   apt: name=spotify-client state=present allow-unauthenticated=yes
 
