@@ -6,7 +6,7 @@
    - docker-compose
 
 - name: Add user to the docker group
-  user: name=bufoor groups=docker append=yes
+  user: name={{user_system_name}} groups=docker append=yes
 
 - name: Restart deamon
   service: name=docker state=restarted
