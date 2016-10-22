@@ -4,7 +4,7 @@
 ---
 - hosts: workstation
   roles:
-    - {common, become: true}
+    - {role: common, become: true}
 
   tasks:
   - name: add user to the docker group
