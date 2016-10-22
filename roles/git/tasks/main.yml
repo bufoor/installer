@@ -1,0 +1,10 @@
+---
+- name: Install
+  apt: name=git state=present
+
+- name: Add global username
+  git_config: name=user.name value="Piotr Szymanski" scope=system  
+
+- name: Add global user email
+  git_config: name=user.email value="bufoor@gmail.com" scope=system
+

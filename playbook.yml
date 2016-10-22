@@ -1,6 +1,3 @@
-#to do: git config --global user.name "John Doe"
-#to do: git config --global user.email johndoe@example.com
-
 ---
 - hosts: workstation
   roles:
@@ -10,4 +7,5 @@
     - {role: google-chrome, become: true}
     - {role: virtualbox, become: true}
     - {role: docker, become: true}
+    - {role: git, become: true}
 

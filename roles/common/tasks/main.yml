@@ -4,7 +4,6 @@
   with_items:
    - python-selinux
    - mc
-   - git
    - network-manager-openconnect
    - software-properties-common
    - gnome-shell
