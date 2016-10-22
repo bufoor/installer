@@ -8,18 +8,5 @@
     - {role: java8, become: true}
     - {role: spotify, become: true}
     - {role: google-chrome, become: true}
-
-  tasks:
-
-  - name: Add Virtualbox repository keys
-    become: yes
-    apt_key: url=https://www.virtualbox.org/download/oracle_vbox.asc state=present
-
-  - name: Add Virtualbox repository
-    become: yes
-    apt_repository: repo="deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib" state=present
-
-  - name: Install VirtualBox
-    become: yes
-    apt: pkg=virtualbox-5.1 state=present allow-unauthenticated=yes
+    - {role: virtualbox, become: true}
 
