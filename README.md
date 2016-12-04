@@ -10,6 +10,7 @@ Ansible >=2.1
 
 ##Packages list:
 - Git
+- Git LFS
 - Java 8
 - Docker
 - Docker compose
