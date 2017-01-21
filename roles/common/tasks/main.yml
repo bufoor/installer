@@ -12,4 +12,5 @@
    - firewalld
    - firewall-config
    - firewall-applet
+   - openvpn
 
