@@ -11,4 +11,5 @@
    - vlc
    - firewalld
    - firewall-config
+   - firewall-applet
 
