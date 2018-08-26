@@ -8,4 +8,3 @@
     - {role: virtualbox, become: true}
     - {role: docker, become: true}
     - {role: git, become: true}
-
