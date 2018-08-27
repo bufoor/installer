@@ -6,4 +6,4 @@
   apt_key: keyserver=keyserver.ubuntu.com id=931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
 
 - name: Install
-  apt: name=spotify-client state=present allow-unauthenticated=yes
+  apt: name=spotify-client update_cache=yes state=present allow-unauthenticated=yes
