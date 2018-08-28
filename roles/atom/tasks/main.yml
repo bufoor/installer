@@ -1,0 +1,4 @@
+---
+- name: Install Atom editor
+  apt:
+    deb: https://atom.io/download/deb

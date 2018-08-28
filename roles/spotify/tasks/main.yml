@@ -2,6 +2,9 @@
 - name: Add Spotify repository
   apt_repository: repo='deb http://repository.spotify.com stable non-free'
 
+- name: Remove Spotify repository keys
+  shell: apt-key del A87FF9DF48BF1C90
+
 - name: Add Spotify repository keys
   shell: apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A87FF9DF48BF1C90
 
